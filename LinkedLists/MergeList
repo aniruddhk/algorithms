@@ -1,0 +1,45 @@
+
+class Node {
+      public int val;
+      public Node next;
+      Node(int x) { val = x; next = null; }
+}
+ 
+public class MergeList {
+    public Node mergeTwoLists(Node A, Node B) {
+        if(A==null){
+            return B;
+        }
+        if(B==null){
+            return A;
+        }
+
+        Node l,h1,h2,h3;
+
+        if(A.val<B.val){
+            l = A;
+            h3 = A;
+        }else{
+            l = B;
+            h3 = B;
+        }
+
+        while(A.next!=null && B.next!=null){
+            if(A.val<B.val){
+                l.next = A;
+                A = A.next;
+            }else{
+                l.next = B;
+                B = B.next;
+            }
+            l = l.next;
+        }
+        if(A.next==null){
+            l.next = B;
+        }
+        if(B.next==null){
+            l.next=A;
+        }
+        return h3;
+    }
+}
